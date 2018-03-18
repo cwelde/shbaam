@@ -79,7 +79,7 @@ script:
 - echo $TST_PUB_DWNL && $TST_PUB_DWNL
 - echo $TST_PUB_REPR && $TST_PUB_REPR
 - echo "The build is now completed"
-- echo "This is a test"
+
 
 #*******************************************************************************
 #End
