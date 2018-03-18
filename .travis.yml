@@ -49,7 +49,8 @@ before_install:
 #-------------------------------------------------------------------------------
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew upgrade python ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sudo pip install -U --force-reinstall virtualenv ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install virtualenv
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install -U --force-reinstall virtualenv ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install virtualenvwrapper --upgrade ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then virtualenv ./venv -p python3; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install -r requirements.pip ; fi
