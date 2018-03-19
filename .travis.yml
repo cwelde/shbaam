@@ -21,6 +21,8 @@ matrix:
     - os: linux
       sudo: required
     - os: osx
+      language: generic
+      env: PYTHON_VERSION=2.7.14
   allow_failures:
     - os: osx
 
