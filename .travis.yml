@@ -65,6 +65,7 @@ before_install:
 - python --version
 - which pip
 - pip --version
+- pip install --upgrade pip
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install -r requirements.pip ; fi
 #-------------------------------------------------------------------------------
 #General environment details
