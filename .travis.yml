@@ -31,12 +31,6 @@ matrix:
 env:
 - TST_PUB_DWNL='./tst_pub_dwnl_David_etal_201x_SER.sh' TST_PUB_REPR='./tst_pub_repr_David_etal_201x_SER.sh'
 
-- PYTHON_VERSION=2.7.14
-- PYTHON_VERSION=3.4.8
-- PYTHON_VERSION=3.5.5
-- PYTHON_VERSION=3.6.4
-- PYTHON_VERISON=pypy2.7-5.10.0
-- PYTHON_VERSION=pypy3.5-5.10.1
 #*******************************************************************************
 #Before installing SHBAAM
 #*******************************************************************************
@@ -52,13 +46,24 @@ before_install:
 #-------------------------------------------------------------------------------
 #Specific to OSX
 #-------------------------------------------------------------------------------
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew upgrade pyenv ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then which pyenv ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv --version ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then eval "$(pyenv init -)" ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install $PYTHON_VERSION
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global $PYTHON_VERSION
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv versions ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv install -l ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then install $PYTHON_VERSION ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv global $PYTHON_VERSION ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv versions ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew cask uninstall oclint ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew reinstall $(grep -ve '^#' requirements.brw) ; fi
+- which python
+- python --version
+- which pip
+- pip --version
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pip install -r requirements.pip ; fi
-
 #-------------------------------------------------------------------------------
 #General environment details
 #-------------------------------------------------------------------------------
